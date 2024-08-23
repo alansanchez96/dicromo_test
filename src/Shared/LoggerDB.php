@@ -11,7 +11,5 @@ class LoggerDB extends EloquentModel
     protected $fillable = [
         'class',
         'line',
-        'new_record',
-        'old_record'
     ];
 }

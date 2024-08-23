@@ -14,8 +14,6 @@ class RegisterRepository extends BaseRepository implements IRegisterRepository
     public function register(array $entity): bool|AuthDB
     {
         try {
-            DB::beginTransaction();
-
             $auth = AuthDB::create([
                 'name'      => $this->capitalized($entity['name']),
                 'email'     => $this->lower($entity['email']),
@@ -26,12 +24,10 @@ class RegisterRepository extends BaseRepository implements IRegisterRepository
 
             return $auth;
         } catch (AuthException $e) {
-            DB::rollBack();
             $this->log->create(['class' => self::class, 'line' => $e->getLine()]);
 
             return false;
         } catch (\Exception $e) {
-            DB::rollBack();
             $this->log->create(['class' => self::class, 'line' => $e->getLine()]);
 
             return false;

@@ -8,12 +8,13 @@ use Src\Common\Interfaces\Laravel\LaravelController;
 use Src\Modules\Auth\Infrastructure\Database\AuthDB;
 use Src\Modules\Auth\Application\Commands\UpdateUserCommand;
 use Src\Modules\Auth\Application\Queries\UserInformationQuery;
+use Src\Modules\Auth\Infrastructure\Requests\InformationUpdateRequest;
 
 class InformationUpdate extends LaravelController
 {
     public function __construct(private readonly UserInformationQuery $query, private readonly UpdateUserCommand $command) { parent::__construct(); }
 
-    public function __invoke(Request $rq): JsonResponse
+    public function __invoke(InformationUpdateRequest $rq): JsonResponse
     {
         try {
             $statusUser = $this->query->execute();

@@ -2,8 +2,9 @@
 
 namespace Src\Modules\Auth\Application\Commands;
 
-use Illuminate\Http\Request;
 use Src\Common\UseCases;
+use Illuminate\Http\Request;
+use Src\Common\Interfaces\Laravel\EloquentModel;
 use Src\Modules\Auth\Domain\Entities\UserEntity;
 use Src\Modules\Auth\Domain\Contracts\IRegisterRepository;
 
@@ -18,7 +19,7 @@ class RegisterUserCommand extends UseCases
         return $this->repository->register($entity);
     }
 
-    private function getEntity(Request $rq): array
+    public function getEntity(Request $rq, EloquentModel $model = null): array
     {
         $entity = new UserEntity();
 

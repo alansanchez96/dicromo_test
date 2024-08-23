@@ -2,8 +2,9 @@
 
 namespace Src\Modules\Auth\Application\Commands;
 
-use Illuminate\Http\Request;
 use Src\Common\UseCases;
+use Illuminate\Http\Request;
+use Src\Common\Interfaces\Laravel\EloquentModel;
 use Src\Modules\Auth\Domain\Entities\UserEntity;
 use Src\Common\Exceptions\InvalidPasswordException;
 use Src\Modules\Auth\Infrastructure\Database\AuthDB;
@@ -29,7 +30,7 @@ class UpdateUserCommand extends UseCases
         return $auth;
     }
 
-    private function getEntity(Request $rq): array
+    public function getEntity(Request $rq, EloquentModel $model = null): array
     {
         $entity = new UserEntity();
 

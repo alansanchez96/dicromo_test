@@ -3,9 +3,11 @@
 namespace Src\Modules\Auth\Application\Commands;
 
 use Src\Common\UseCases;
-use Src\Modules\Auth\Domain\Contracts\ILoginRepository;
-use Src\Modules\Auth\Domain\Contracts\IUserRepository;
+use Illuminate\Http\Request;
+use Src\Common\Interfaces\Laravel\EloquentModel;
 use Src\Modules\Auth\Infrastructure\Database\AuthDB;
+use Src\Modules\Auth\Domain\Contracts\IUserRepository;
+use Src\Modules\Auth\Domain\Contracts\ILoginRepository;
 
 class DeleteUserCommand extends UseCases
 {
@@ -18,5 +20,10 @@ class DeleteUserCommand extends UseCases
         if ($deleteStatus == 422) return $deleteStatus;
         
         if ($deleteStatus == 200) return $this->loginRepository->logout();
+    }
+    
+    public function getEntity(Request $rq, EloquentModel $model = null)
+    {
+        
     }
 }

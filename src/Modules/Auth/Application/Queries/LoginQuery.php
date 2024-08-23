@@ -2,8 +2,9 @@
 
 namespace Src\Modules\Auth\Application\Queries;
 
-use Illuminate\Http\Request;
 use Src\Common\UseCases;
+use Illuminate\Http\Request;
+use Src\Common\Interfaces\Laravel\EloquentModel;
 use Src\Modules\Auth\Domain\Entities\UserEntity;
 use Src\Modules\Auth\Domain\Contracts\ILoginRepository;
 
@@ -28,7 +29,7 @@ class LoginQuery extends UseCases
         }
     }
 
-    private function getEntity(Request $rq): array
+    public function getEntity(Request $rq, EloquentModel $model = null): array
     {
         $entity = new UserEntity();
 

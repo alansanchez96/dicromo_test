@@ -4,6 +4,7 @@ namespace Src\Modules\Auth\Infrastructure\Repositories;
 
 use Src\Common\BaseRepository;
 use Illuminate\Support\Facades\Auth;
+use Src\Modules\Auth\Infrastructure\Database\AuthDB;
 use Src\Modules\Auth\Domain\Contracts\ILoginRepository;
 
 class LoginRepository extends BaseRepository implements ILoginRepository

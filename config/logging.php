@@ -51,6 +51,11 @@ return [
     */
 
     'channels' => [
+        'logger' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/logger/' . date('Y-m-d') . '.log'),
+            'level' => 'debug'
+        ],
 
         'stack' => [
             'driver' => 'stack',

@@ -16,7 +16,6 @@ class LogService
 
             if (!$log) throw new LogException('ERROR AL CREAR EL LOG');
         } catch (LogException $e) {
-            DB::rollBack();
             Log::channel('logger')->debug('LogsException', [
                 'message' => $e->getMessage(),
                 'line' => $e->getLine(),

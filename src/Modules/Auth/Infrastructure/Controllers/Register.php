@@ -27,13 +27,10 @@ class Register extends LaravelController
                 $status = $this->query->login($request);
     
                 if (!$status) return response()->json(['message' => 'Usuario/Contraseña incorrectos', 'status' => $status]);
-    
-                DB::commit();
             }
 
             return response()->json($status, 200);
         } catch (\Exception $e) {
-            DB::rollBack();
             $this->log->create(['class' => self::class, 'line' => $e->getLine()]);
 
             return $this->response->failure($e);

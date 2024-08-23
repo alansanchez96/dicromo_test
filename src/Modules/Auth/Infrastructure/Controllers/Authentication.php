@@ -18,7 +18,7 @@ class Authentication extends LaravelController
     {
         try {
             $status = $this->query->login($request);
-    
+            // dd($status);
             if (!$status) return response()->json(['message' => 'Usuario/Contraseña incorrectos', 'status' => $status]);
 
             return response()->json($status, 200);
